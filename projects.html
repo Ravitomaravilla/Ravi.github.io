@@ -17,8 +17,8 @@
     </ul>
   </nav>
 
-  <!-- Project Section -->
-  <div class="about-page"> <!-- reuse centered styling -->
+  <!-- Project 1: Blue Horizontal Branch (BHB) Stars -->
+  <div class="about-page">
     <h1>Projects</h1>
     
     <h2>Blue Horizontal Branch (BHB) Stars</h2>
@@ -43,5 +43,38 @@
     <p><strong>Read more:</strong> <a href="projects/BHB_Stars.pdf" target="_blank">Download Project PDF</a></p>
   </div>
 
+  <!-- Project 2: Classification of Galaxies -->
+  <div class="about-page">
+  <h2>Classification of Galaxies</h2>
+
+  <p>
+    This project focuses on the <strong>morphological classification of galaxies</strong> using 
+    <strong>convolutional neural networks (CNNs)</strong>. The goal was to train a deep learning model capable 
+    of distinguishing between <em>spiral</em> and <em>elliptical</em> galaxies. The dataset was obtained from 
+    the <strong>Galaxy Zoo</strong> project, with FITS file extraction and data cleaning performed using 
+    <strong>Astropy</strong> and <strong>Pandas</strong>, followed by filtering uncertain classifications and 
+    downloading images via the <strong>SDSS API</strong> using the <strong>Requests</strong> library.
+  </p>
+
+  <p>
+    I preprocessed and augmented the dataset, normalized the images, and trained a CNN using 
+    <strong>TensorFlow</strong> and <strong>Keras</strong>. All images were standardized with 
+    <strong>Pillow</strong> and <strong>NumPy</strong>, then organized into structured training and validation sets. 
+    The model learned key morphological patterns such as <em>spiral arms</em> and <em>bulges</em>, achieving 
+    approximately <strong>95% validation accuracy</strong>.
+  </p>
+
+  <p>
+    The final model demonstrated strong performance in predicting galaxy morphologies, 
+    showcasing the power of <strong>machine learning in astrophysical data analysis</strong>.
+  </p>
+
+  <p>
+    <strong>Read more:</strong> 
+    <a href="https://github.com/ravitomaravilla/ravitomaravilla.github.io/blob/main/Projects/classification_of_galaxies.ipynb" target="_blank">
+      Open Notebook
+    </a>
+  </p>
+</div>
 </body>
 </html>
