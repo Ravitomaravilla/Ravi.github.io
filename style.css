@@ -1,66 +1,29 @@
-/* Reset and base styles */
-body, html {
+/* -------------------------
+   Clean consolidated CSS
+   ------------------------- */
+
+/* Reset / base */
+* { box-sizing: border-box; }
+html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;   /* allow vertical scrolling */
+  overflow-x: hidden; /* prevent horizontal scroll */
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  color: white; /* Default text color so it shows on dark images */
 }
 
-/* Navigation bar */
-nav {
-  background: rgba(0, 0, 0, 0.6); /* semi-transparent to see slideshow behind */
-  padding: 10px 20px;
-  position: relative;
-  z-index: 10; /* ensures nav is above slideshow */
-}
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-nav ul li {
-  margin-right: 20px;
-}
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-nav ul li a:hover {
-  color: #ffcc00; /* gold highlight on hover */
-}
-
-/* Headings */
-h1 {
-  color: white;
-  font-size: 3em;
-  text-align: center;
-  margin-top: 150px;
-  z-index: 5;
-  position: relative;
-}
-
-/* Paragraphs */
-p {
-  text-align: center;
-  font-size: 1.2em;
-  z-index: 5;
-  position: relative;
-}
-
-/* Slideshow background */
+/* Slideshow background (fixed, behind everything) */
 .slideshow {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -2; /* behind content */
+  overflow: hidden;
 }
 
 .slideshow img {
@@ -72,56 +35,100 @@ p {
   animation: fade 24s infinite;
 }
 
-/* Each image gets a different start time */
-.slideshow img:nth-child(1) {
-  animation-delay: 0s;
-}
-.slideshow img:nth-child(2) {
-  animation-delay: 8s;
-}
-.slideshow img:nth-child(3) {
-  animation-delay: 16s;
-}
+.slideshow img:nth-child(1) { animation-delay: 0s; }
+.slideshow img:nth-child(2) { animation-delay: 8s; }
+.slideshow img:nth-child(3) { animation-delay: 16s; }
 
-/* Fade animation */
 @keyframes fade {
-  0% { opacity: 0; }
-  8% { opacity: 1; }
-  33% { opacity: 1; }
-  41% { opacity: 0; }
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  33%  { opacity: 1; }
+  41%  { opacity: 0; }
   100% { opacity: 0; }
 }
 
-/* Footer credits */
-footer {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  font-size: 12px;
-  color: white;
-  z-index: 10;
-}
-footer a {
-  color: #87CEFA; /* light blue */
-  text-decoration: none;
-}
-footer a:hover {
-  text-decoration: underline;
-}
-.about-page {
-  max-width: 800px;
-  margin: 50px auto;
-  text-align: center;
+/* site content sits above slideshow */
+.site-content {
+  position: relative;
+  z-index: 2; /* above slideshow */
+  /* optional: put a subtle translucent backdrop for readability */
+  /* background: rgba(0,0,0,0.15); */
 }
 
+/* Navigation */
+nav {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  position: sticky; /* stays on top when scrolling */
+  top: 0;
+  z-index: 5;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+nav ul li { margin-right: 20px; }
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+nav ul li a:hover { color: #ffcc00; }
+
+/* Headings & paragraphs */
+h1 {
+  color: white;
+  font-size: 3em;
+  text-align: center;
+  margin-top: 100px;
+  position: relative;
+}
+p {
+  font-size: 1.1em;
+  position: relative;
+}
+
+/* About / project card styling */
+.about-page {
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: left;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.85); /* light card for readability */
+  color: #222; /* dark text on the card */
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* if you want some headings inside cards to be darker/standout */
+.about-page h2 {
+  margin-top: 0;
+}
+
+/* Thumbnail image inside project */
 .about-page img {
   border-radius: 10px;
   margin-top: 20px;
-  max-width: 250px;
+  max-width: 100%;
   height: auto;
+  display: block;
 }
 
-body {
-  background: #f9f9f9; /* light gray */
-  color: #333; /* dark text */
+/* Footer */
+footer {
+  font-size: 12px;
+  color: white;
+  position: relative;
+  z-index: 5;
+  padding: 10px;
+  text-align: left;
+}
+
+/* small-screen tweaks */
+@media (max-width: 700px) {
+  h1 { font-size: 2em; margin-top: 60px; }
+  .about-page { margin: 20px; padding: 16px; }
 }
